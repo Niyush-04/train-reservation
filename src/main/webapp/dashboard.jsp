@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.trainreservation.model.Train" %>
+<%@ page import="jakarta.servlet.http.HttpSession" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,12 +13,21 @@
 <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
+
+    <%
+        HttpSession session1 = request.getSession(false);
+        if (session1 != null && session1.getAttribute("user") != null) {
+        String username = (String) session1.getAttribute("username");
+        String email = (String) session1.getAttribute("email");
+        %>
+
     <header>
         <div class="logo">
             <h2>TrainGo</h2>
         </div>
         <div class="user-info">
             <p>${email}</p>
+            <form action="logout.jsp" method="POST">
             <button type="submit" class="btn btn-outline" id="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
@@ -25,6 +35,7 @@
                 </svg>
                 Logout
             </button>
+            </form>
         </div>
     </header>
 
@@ -117,5 +128,11 @@
         <% } %>
     </div>
 
+    <% 
+} else {
+    response.sendRedirect("login.jsp");
+}
+
+%>
 </body>
 </html> 
