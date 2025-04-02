@@ -23,7 +23,8 @@ public class TrainDAO {
                      "    S2.station_name AS to_station, " +
                      "    R2.arrival_time AS arrival_time, " +
                      "    S.seats_available, " +
-                     "    S.travel_date " +
+                     "    S.travel_date, " +
+                     "    (T.basic_fare + ABS(R2.position - R1.position) * 10) AS fare " +
                      "FROM Trains T " +
                      "JOIN Routes R1 ON T.train_no = R1.train_no " +
                      "JOIN Routes R2 ON T.train_no = R2.train_no " +
@@ -35,6 +36,7 @@ public class TrainDAO {
                      "AND S.travel_date = ? " +
                      "AND R1.arrival_time < R2.arrival_time " +
                      "ORDER BY R1.arrival_time";
+
 
         try (Connection con = DBConnection.getConnection(); PreparedStatement pstmt = con.prepareStatement(query)) {
             pstmt.setString(1, fromStation);
@@ -52,6 +54,7 @@ public class TrainDAO {
                     train.setArrivalTime(rs.getString("arrival_time"));
                     train.setSeatsAvailable(rs.getInt("seats_available"));
                     train.setTravelDate(rs.getString("travel_date"));
+                    train.setFare(rs.getString("fare"));
                     trains.add(train);
                 }
             }

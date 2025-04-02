@@ -10,6 +10,7 @@ public class Train {
     private String arrivalTime;
     private int seatsAvailable;
     private String travelDate;
+    private String fare;
 
     public Train() {
     }
@@ -77,4 +78,13 @@ public class Train {
     public void setTravelDate(String travelDate) {
         this.travelDate = travelDate;
     }
+
+    public String getFare() {
+        return fare;
+    }
+
+    public void setFare(String fare) {
+        this.fare = fare;
+    }
+
 }
