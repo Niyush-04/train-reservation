@@ -38,22 +38,22 @@
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
+            <input type="email" id="email" name="email" required placeholder="Enter your email"/>
           </div>
 
           <div class="form-group">
             <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" required />
+            <input type="tel" id="phone" name="phone" required placeholder="Enter your phone"/>
           </div>
 
           <div class="form-group">
             <label for="username">Username</label>
-            <input type="username" id="username" name="username" required />
+            <input type="username" id="username" name="username" required placeholder="Enter your username"/>
           </div>
 
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required />
+            <input type="password" id="password" name="password" required placeholder="Enter your password"/>
           </div>
 
           <div class="form-group submit-group">

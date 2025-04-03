@@ -313,7 +313,7 @@
     handleResize();
 
     function showAlert() {
-        alert("Login kr lo sarrrrrrrrr..");
+        alert("Please sign in before booking your ticket to continue with your reservation. Thank you ");
     }
 
 </script>

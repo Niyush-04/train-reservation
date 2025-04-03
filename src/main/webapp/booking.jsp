@@ -1,23 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="jakarta.servlet.http.HttpSession" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TrainGo - Booking</title>
+    <link rel="stylesheet" href="bookingStyles.css">
 </head>
 <body>
     <%
-        HttpSession session1 = request.getSession(false);
-        if (session1 == null || session1.getAttribute("user") == null) {
+        HttpSession bookingSession = request.getSession(false);
+        if (bookingSession == null || bookingSession.getAttribute("user") == null) {
             response.sendRedirect("login.jsp");
         } else {
-            String username = (String) session1.getAttribute("username");
-            String email = (String) session1.getAttribute("email");
+            String username = (String) bookingSession.getAttribute("username");
+            String email = (String) bookingSession.getAttribute("email");
             String trainNo = request.getParameter("trainNo");
             String trainName = request.getParameter("trainName");
             String journeyDate = request.getParameter("journeyDate");
             String availableSeats = request.getParameter("availableSeats");
             String fare = request.getParameter("fare");
+            String source = request.getParameter("source");
+            String destination = request.getParameter("destination");
     %>
     <header>
         <h2>TrainGo - Confirm Booking</h2>
@@ -25,20 +30,24 @@
 
     <div class="booking-container">
         <h3>Booking Details</h3>
-        <p><strong>Passenger Name:</strong> <%= username %></p>
+        <p><strong>User Name:</strong> <%= username %></p>
         <p><strong>Email:</strong> <%= email %></p>
         <p><strong>Train No:</strong> <%= trainNo %></p>
         <p><strong>Train Name:</strong> <%= trainName %></p>
         <p><strong>Journey Date:</strong> <%= journeyDate %></p>
         <p><strong>Seats Available:</strong> <%= availableSeats %></p>
-        <p><strong>Fare:</strong> ₹<%= fare %></p>
+        <p><strong>Base Fare:</strong> <span id="baseFare"><%= fare %></span></p>
+        <p class="total-fare"><strong>Total Fare:</strong> <span id="totalFare"><%= fare %></span></p>
 
-        <form action="confirmBookingServlet" method="post">
+        <form action="confirmbooking" method="post">
+            <input type="hidden" name="username" value="<%= username %>">
             <input type="hidden" name="trainNo" value="<%= trainNo %>">
-            <input type="hidden" name="trainName" value="<%= trainName %>">
             <input type="hidden" name="journeyDate" value="<%= journeyDate %>">
-            <input type="hidden" name="email" value="<%= email %>">
-            <input type="hidden" name="fare" value="<%= fare %>">
+            <input type="hidden" name="totalFare" value="<%= fare %>">
+            <input type="hidden" name="source" value="<%= source %>">
+            <input type="hidden" name="destination" value="<%= destination %>">
+
+
             
             <h3>Passenger Details</h3>
             
@@ -81,6 +90,8 @@
             <button type="submit">Confirm Booking</button>
         </form>
     </div>
+    
+    <script src="bookingScript.js"></script>
     <% } %>
 </body>
 </html>

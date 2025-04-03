@@ -42,14 +42,14 @@
               type="text"
               id="username"
               name="username"
-              placeholder="name"
+              placeholder="Enter Username"
               required
             />
           </div>
 
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required />
+            <input type="password" id="password" name="password" required placeholder="Enter Password" />
           </div>
 
           <div class="form-group submit-group">

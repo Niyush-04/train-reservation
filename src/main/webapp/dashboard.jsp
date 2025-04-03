@@ -19,6 +19,7 @@
         if (session1 != null && session1.getAttribute("user") != null) {
         String username = (String) session1.getAttribute("username");
         String email = (String) session1.getAttribute("email");
+        String greeting = (String) session1.getAttribute("greeting");
         %>
 
     <header>
@@ -40,7 +41,7 @@
     </header>
 
     <div class="greeting">
-        <h1>Good Morning, ${username}!</h1>
+        <h1>${greeting}, ${username}!</h1>
         <p>Find your perfect train journey</p>
     </div>
 
@@ -100,12 +101,14 @@
                                 <h2>Fare: <%= train.getFare() %>/-</h2>
                             </div>
                             <div>
-                                <form action="booking.jsp" method="POST">
+                                <form action="booking" method="POST">
                                     <input type="hidden" name="trainNo" value="<%= train.getTrainNo() %>">
                                     <input type="hidden" name="trainName" value="<%= train.getTrainName() %>">
                                     <input type="hidden" name="journeyDate" value="<%= journeyDate %>">
                                     <input type="hidden" name="availableSeats" value="<%= train.getSeatsAvailable() %>">
                                     <input type="hidden" name="fare" value="<%= train.getFare() %>">
+                                    <input type="hidden" name="source" value="<%= fromStation %>">
+                                    <input type="hidden" name="destination" value="<%= toStation %>">
                                     <button type="submit" id="BookNow">Book Now</button>
                                 </form>
                             </div>

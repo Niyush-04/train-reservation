@@ -34,6 +34,8 @@ public class DashboardServlet extends HttpServlet {
         // String journeyDate = request.getParameter("journeyDate");
         String journeyDate = "2024-07-01";
 
+
+
         List<Train> trains = trainDao.searchTrains(fromStation, toStation, journeyDate);
 
         request.setAttribute("fromStation", fromStation);

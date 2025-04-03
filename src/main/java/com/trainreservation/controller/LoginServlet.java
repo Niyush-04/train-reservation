@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.trainreservation.dao.UserDAO;
 import com.trainreservation.model.User;
+import com.trainreservation.util.Greeting;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -27,24 +28,25 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
 
-            UserDAO userDao = new UserDAO();
-            User user = userDao.validateUser(username, password);
+        UserDAO userDao = new UserDAO();
+        User user = userDao.validateUser(username, password);
 
-            if (user != null) {
-                HttpSession session = request.getSession();
-                session.setAttribute("user", user);
-                session.setAttribute("userId", user.getUserId());
-                session.setAttribute("username", user.getUsername());
-                session.setAttribute("email", user.getEmail());
+        if (user != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
+            session.setAttribute("userId", user.getUserId());
+            session.setAttribute("username", user.getUsername());
+            session.setAttribute("email", user.getEmail());
+            session.setAttribute("greeting", Greeting.getGreeting());
 
-                response.sendRedirect("dashboard.jsp");
-            } else {
-                request.setAttribute("errorMessage", "Invalid username or password");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-            }
+            response.sendRedirect("dashboard.jsp");
+        } else {
+            request.setAttribute("errorMessage", "Invalid username or password");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
     }
 
 }

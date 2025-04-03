@@ -1,4 +1,4 @@
-package com.trainreservation.servlet;
+package com.trainreservation.controller;
 
 import java.io.IOException;
 
@@ -11,6 +11,16 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/booking")
 public class BookingServlet extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("booking.jsp").forward(request, response);
+    }
+
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(false);
         
@@ -19,18 +29,17 @@ public class BookingServlet extends HttpServlet {
             return;
         }
 
-        // Retrieve user details
         String username = (String) session.getAttribute("username");
         String email = (String) session.getAttribute("email");
 
-        // Retrieve train details
         String trainNo = request.getParameter("trainNo");
         String trainName = request.getParameter("trainName");
         String journeyDate = request.getParameter("journeyDate");
         String availableSeats = request.getParameter("availableSeats");
         String fare = request.getParameter("fare");
+        String source = request.getParameter("source");
+        String destination = request.getParameter("destination");
 
-        // Set attributes for JSP
         request.setAttribute("username", username);
         request.setAttribute("email", email);
         request.setAttribute("trainNo", trainNo);
@@ -38,8 +47,9 @@ public class BookingServlet extends HttpServlet {
         request.setAttribute("journeyDate", journeyDate);
         request.setAttribute("availableSeats", availableSeats);
         request.setAttribute("fare", fare);
+        request.setAttribute("source", source);
+        request.setAttribute("destination", destination);
 
-        // Forward request to JSP
         request.getRequestDispatcher("booking.jsp").forward(request, response);
     }
 }
