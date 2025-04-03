@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TrainGo - Home</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
     <div class="background-section">
@@ -64,20 +64,33 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="fromStation">From Station</label>
-                            <input type="text" id="fromStation" name="fromStation" placeholder="e.g. New Delhi" required>
+                            <input type="text" id="fromStation" name="fromStation" list="stations" placeholder="e.g. New Delhi" required onchange="validateStations()">
                         </div>
-                        
+        
                         <div class="form-group">
                             <label for="toStation">To Station</label>
-                            <input type="text" id="toStation" name="toStation" placeholder="e.g. Mumbai" required>
+                            <input type="text" id="toStation" name="toStation" list="stations" placeholder="e.g. Mumbai" required onchange="validateStations()">
                         </div>
-                        
+        
                         <div class="form-group">
                             <label for="journeyDate">Journey Date</label>
                             <input type="date" id="journeyDate" name="journeyDate" required>
                         </div>
                     </div>
-                    
+        
+                    <datalist id="stations">
+                        <option value="Agra">
+                        <option value="Banaras">
+                        <option value="Bangalore">
+                        <option value="Chennai">
+                        <option value="Delhi">
+                        <option value="Gwalior">
+                        <option value="Jhansi">
+                        <option value="Lucknow">
+                        <option value="Mumbai">
+                        <option value="Sithouli">
+                    </datalist>
+        
                     <div class="form-group">
                         <button type="submit" class="search-button">Search Trains</button>
                     </div>

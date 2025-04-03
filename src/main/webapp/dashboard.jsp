@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TrainGo - Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="dashboard.css">
+<link rel="stylesheet" href="./css/dashboard.css">
 </head>
 <body>
 
@@ -51,12 +51,12 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="fromStation">From Station</label>
-                    <input type="text" class="form-control" id="fromStation" name="fromStation" placeholder="e.g. New Delhi" required>
+                    <input type="text" class="form-control" id="fromStation" list = "stations" name="fromStation" placeholder="e.g. New Delhi" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="toStation">To Station</label>
-                    <input type="text" class="form-control" id="toStation" name="toStation" placeholder="e.g. Mumbai" required>
+                    <input type="text" class="form-control" id="toStation" list="stations" name="toStation" placeholder="e.g. Mumbai" required>
                 </div>
                 
                 <div class="form-group">
@@ -64,6 +64,19 @@
                     <input type="date" class="form-control" id="journeyDate" name="journeyDate" required>
                 </div>
             </div>
+
+            <datalist id="stations">
+                <option value="Agra">
+                <option value="Banaras">
+                <option value="Bangalore">
+                <option value="Chennai">
+                <option value="Delhi">
+                <option value="Gwalior">
+                <option value="Jhansi">
+                <option value="Lucknow">
+                <option value="Mumbai">
+                <option value="Sithouli">
+            </datalist>
             
             <div class="form-group">
                 <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.75rem;">

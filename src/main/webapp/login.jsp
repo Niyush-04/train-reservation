@@ -4,13 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TrainGo - Login</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
     <div class="background-section">
       <header>
         <div class="logo">
-            <!-- <img src="img/TrainGo.png" alt="TrainGo Logo"> -->
             <h2>TrainGo</h2>
         </div>
         <nav>

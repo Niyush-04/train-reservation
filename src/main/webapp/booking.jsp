@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TrainGo - Booking</title>
-    <link rel="stylesheet" href="bookingStyles.css">
+    <link rel="stylesheet" href="./css/bookingStyles.css">
 </head>
 <body>
     <%

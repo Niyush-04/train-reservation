@@ -31,12 +31,10 @@ public class DashboardServlet extends HttpServlet {
 
         String fromStation = request.getParameter("fromStation");
         String toStation = request.getParameter("toStation");
-        // String journeyDate = request.getParameter("journeyDate");
-        String journeyDate = "2024-07-01";
+        String journeyDate = request.getParameter("journeyDate");
 
-
-
-        List<Train> trains = trainDao.searchTrains(fromStation, toStation, journeyDate);
+        //Using by default date bcs of limited database.
+        List<Train> trains = trainDao.searchTrains(fromStation, toStation, "2024-07-01");
 
         request.setAttribute("fromStation", fromStation);
         request.setAttribute("toStation", toStation);
