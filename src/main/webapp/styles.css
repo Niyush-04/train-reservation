@@ -23,6 +23,7 @@ header {
     z-index: 100;
 }
 
+
 .logo h2 {
     color: #000;
     font-size: 24px;
@@ -273,6 +274,7 @@ header {
 }
 
 .form-group {
+    gap: 10px;
     flex: 1;
     min-width: 200px;
 }
@@ -568,6 +570,167 @@ header {
     }
 }
 
+/* train search result css */
+
+/* Results Container */
+.results-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.results-container h3 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: clamp(20px, 4vw, 24px);
+    font-weight: 600;
+}
+
+.train-cards {
+    margin: 10px 0;
+    display: grid;
+    gap: 20px;
+}
+
+.train-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.train-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.train-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
+    padding: 15px;
+    position: relative;
+}
+
+.train-name {
+    font-size: clamp(16px, 3vw, 18px);
+    font-weight: 600;
+    margin: 0;
+}
+
+.train-number {
+    font-size: 14px;
+    opacity: 0.9;
+    margin: 5px 0 0 0;
+}
+
+.train-body {
+    padding: 20px;
+}
+
+.train-time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.departure,
+.arrival {
+    text-align: center;
+    flex: 1;
+    min-width: 100px;
+}
+
+.time-label {
+    font-size: 12px;
+    color: #7f8c8d;
+    margin-bottom: 5px;
+}
+
+.time-value {
+    font-size: clamp(16px, 3vw, 18px);
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.time-connector {
+    flex-grow: 1;
+    height: 2px;
+    background: #e0e0e0;
+    margin: 0 10px;
+    position: relative;
+    min-width: 40px;
+}
+
+.time-connector:after {
+    content: '→';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 0 5px;
+    color: #7f8c8d;
+}
+
+.seats-available {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 12px;
+    border-radius: 8px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.seats-label {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.seats-value {
+    font-weight: 600;
+    color: #27ae60;
+    font-size: 16px;
+}
+
+.no-results {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
+
+.no-results p {
+    font-size: clamp(16px, 3vw, 18px);
+    color: #7f8c8d;
+    margin: 0;
+}
+
+#BookNow {
+    align-self: flex-end;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-weight: bold;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+#BookNow:hover {
+    background-color: black;
+    color: white;
+}
 
 
 

@@ -93,13 +93,22 @@
                     <div class="train-card">
                         <div class="train-header">
                             <div>
-                            <p class="train-number">Train <%= train.getTrainNo() %></p>
-                            <h4 class="train-name"><%= train.getTrainName() %></h4>
-                        </div>
-                        <div>
-                            <h2>Fare: <%= train.getFare() %>/-</h2>
-                        </div>
-                            <div><button type="submit" id="BookNow">Book Now</button></div>
+                                <p class="train-number">Train <%= train.getTrainNo() %></p>
+                                <h4 class="train-name"><%= train.getTrainName() %></h4>
+                            </div>
+                            <div>
+                                <h2>Fare: <%= train.getFare() %>/-</h2>
+                            </div>
+                            <div>
+                                <form action="booking.jsp" method="POST">
+                                    <input type="hidden" name="trainNo" value="<%= train.getTrainNo() %>">
+                                    <input type="hidden" name="trainName" value="<%= train.getTrainName() %>">
+                                    <input type="hidden" name="journeyDate" value="<%= journeyDate %>">
+                                    <input type="hidden" name="availableSeats" value="<%= train.getSeatsAvailable() %>">
+                                    <input type="hidden" name="fare" value="<%= train.getFare() %>">
+                                    <button type="submit" id="BookNow">Book Now</button>
+                                </form>
+                            </div>
                         </div>
                         <div class="train-body">
                             <div class="train-time">
@@ -135,4 +144,4 @@
 
 %>
 </body>
-</html> 
+</html>

@@ -33,7 +33,8 @@ header {
 
 .logo h2:hover {
     transform: scale(1.05);
-    color: #f76a13;
+    color: #224afa;
+    cursor: pointer;
 }
 
 /* User Info */

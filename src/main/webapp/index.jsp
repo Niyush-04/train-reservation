@@ -36,15 +36,15 @@
         
         <div class="slideshow-container">
             <div class="mySlides fade">
-                <img src="image.png" alt="Train journey">
+                <img src="res/background1.jpg" alt="Train journey">
             </div>
             
             <div class="mySlides fade">
-                <img src="image1.jpg" alt="Train station">
+                <img src="res/background2.jpg" alt="Train station">
             </div>
             
             <div class="mySlides fade">
-                <img src="images.jpg" alt="Scenic route">
+                <img src="res/background3.jpg" alt="Scenic route">
             </div>
             
             <a class="prev" onclick="plusSlides(-1)">❮</a>
@@ -85,49 +85,58 @@
             </div>
         </div>
 
-    <%
-    String fromStation = (String) request.getAttribute("fromStation");
-    String toStation = (String) request.getAttribute("toStation");
-    String journeyDate = (String) request.getAttribute("journeyDate");
-    List<Train> trains = (List<Train>) request.getAttribute("trains");
-    %>
-    <div class="results-container">
-        <% if (trains != null && !trains.isEmpty()) { %>
-            <h3>Trains from <%= fromStation != null ? fromStation : "" %> to <%= toStation != null ? toStation : "" %> on <%= journeyDate != null ? journeyDate : "" %></h3>
-            
-            <div class="train-cards">
-                <% for (Train train : trains) { %>
-                    <div class="train-card">
-                        <div class="train-header">
-                            <p class="train-number">Train <%= train.getTrainNo() %></p>
-                            <h4 class="train-name"><%= train.getTrainName() %></h4>
-                        </div>
-                        <div class="train-body">
-                            <div class="train-time">
-                                <div class="departure">
-                                    <div class="time-label">DEPARTURE</div>
-                                    <div class="time-value"><%= train.getDepartureTime() %></div>
+        <%
+        String fromStation = (String) request.getAttribute("fromStation");
+        String toStation = (String) request.getAttribute("toStation");
+        String journeyDate = (String) request.getAttribute("journeyDate");
+        List<Train> trains = (List<Train>) request.getAttribute("trains");
+        %>
+    
+        <div class="results-container">
+            <% if (trains != null && !trains.isEmpty()) { %>
+                <h3>Trains from <%= fromStation != null ? fromStation : "" %> to <%= toStation != null ? toStation : "" %> on <%= journeyDate != null ? journeyDate : "" %></h3>
+                
+                <div class="train-cards">
+                    <% for (Train train : trains) { %>
+                        <div class="train-card">
+                            <div class="train-header">
+                                <div>
+                                <p class="train-number">Train <%= train.getTrainNo() %></p>
+                                <h4 class="train-name"><%= train.getTrainName() %></h4>
+                            </div>
+                            <div>
+                                <h2>Fare: <%= train.getFare() %>/-</h2>
+                            </div>
+                                <div><button type="submit" id="BookNow" onclick="showAlert()">Book Now</button></div>
+                            </div>
+                            <div class="train-body">
+                                <div class="train-time">
+                                    <div class="departure">
+                                        <div class="time-label">DEPARTURE</div>
+                                        <div class="time-value"><%= train.getDepartureTime() %></div>
+                                    </div>
+                                    <div class="time-connector"></div>
+                                    <div class="arrival">
+                                        <div class="time-label">ARRIVAL</div>
+                                        <div class="time-value"><%= train.getArrivalTime() %></div>
+                                    </div>
                                 </div>
-                                <div class="time-connector"></div>
-                                <div class="arrival">
-                                    <div class="time-label">ARRIVAL</div>
-                                    <div class="time-value"><%= train.getArrivalTime() %></div>
+                                <div class="seats-available">
+                                    <div class="seats-label">Seats Available</div>
+                                    <div class="seats-value"><%= train.getSeatsAvailable() %></div>
                                 </div>
                             </div>
-                            <div class="seats-available">
-                                <div class="seats-label">Seats Available</div>
-                                <div class="seats-value"><%= train.getSeatsAvailable() %></div>
-                            </div>
                         </div>
-                    </div>
-                <% } %>
-            </div>
-        <% } else if (trains != null) { %>
-            <div class="no-results">
-                <p>No trains available for this route on the selected date.</p>
-            </div>
-        <% } %>
-    </div>
+                    <% } %>
+                </div>
+            <% } else if (trains != null) { %>
+                <div class="no-results">
+                    <p>No trains available for this route on the selected date.</p>
+                </div>
+            <% } %>
+        </div>
+    
+
     <div class="why-choose-us">
         <h2>Why Choose Us</h2>
         <div class="features-container" id="featuresContainer">
@@ -302,6 +311,11 @@
     
     window.addEventListener('resize', handleResize);
     handleResize();
+
+    function showAlert() {
+        alert("Login kr lo sarrrrrrrrr..");
+    }
+
 </script>
 </body>
 </html>
