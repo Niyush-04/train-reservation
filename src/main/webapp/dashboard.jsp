@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.trainreservation.model.Train" %>
+<%@ page import="com.trainreservation.model.Ticket" %>
+<%@ page import= "com.trainreservation.dao.TicketDAO" %>
 <%@ page import="jakarta.servlet.http.HttpSession" %>
 
 <!DOCTYPE html>
@@ -153,11 +155,59 @@
         <% } %>
     </div>
 
+
+    <%
+    TicketDAO ticketDAO = new TicketDAO();
+    List<Ticket> tickets = ticketDAO.getTicketsByUser(username);
+%>
+
+<div class="previous-booked-ticket">
+    <%
+        if (tickets != null && !tickets.isEmpty()) {
+            for (Ticket ticket : tickets) {
+    %>
+                <div class="ticket-card">
+                    <div class="ticket-main-info">
+                        <div class="pnr">PNR: <%= ticket.getPnr() %></div>
+                        <div class="train-no">Train #<%= ticket.getTrainNo() %></div>
+                        <div class="route">
+                            <span class="station"><%= ticket.getSource() %></span>
+                            <span class="arrow">→</span>
+                            <span class="station"><%= ticket.getDestination() %></span>
+                        </div>
+                    </div>
+                    
+                    <div class="ticket-details">
+                        <div class="detail-item">
+                            <div class="detail-label">Travel Date</div>
+                            <div class="detail-value"><%= ticket.getDate() %></div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Seats</div>
+                            <div class="detail-value"><%= ticket.getTotalSeats() %></div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Total Fare</div>
+                            <div class="detail-value fare">₹<%= ticket.getTotalFare() %></div>
+                        </div>
+                    </div>
+                    <div>
+                    <button class="cancel">Cancel Ticket</button>
+                </div>
+                </div>
+    <%
+            }
+        } else {
+    %>
+            <p class="no-tickets">No tickets booked yet.</p>
+    <%
+        }
+    %>
+</div>
     <% 
 } else {
     response.sendRedirect("login.jsp");
 }
-
 %>
 </body>
 </html>

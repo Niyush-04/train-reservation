@@ -359,3 +359,130 @@ header {
         border-radius: 8px;
     }
 }
+
+/* Ticket Styling */
+.previous-booked-ticket {
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: 'Roboto', Arial, sans-serif;
+  }
+  
+  .ticket-card {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+    margin-bottom: 20px;
+    padding: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .ticket-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .ticket-main-info {
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .ticket-details {
+    flex: 2;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 15px;
+    border-left: 1px dashed #ddd;
+  }
+  
+  .pnr {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+  }
+  
+  .train-no {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #2c3e50;
+  }
+  
+  .route {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .station {
+    font-weight: 500;
+  }
+  
+  .arrow {
+    color: #3498db;
+    margin: 0 10px;
+    font-size: 18px;
+  }
+  
+  .detail-item {
+    flex: 1;
+    min-width: 120px;
+    margin-bottom: 12px;
+  }
+  
+  .detail-label {
+    font-size: 12px;
+    color: #777;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+  }
+  
+  .detail-value {
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .fare {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .cancel {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    position: absolute;
+    top: 16px;
+    right: 10px;
+  }
+  
+  .cancel:hover {
+    background-color: #c0392b;
+  }
+  
+  @media (max-width: 600px) {
+    .ticket-card {
+      flex-direction: column;
+    }
+    
+    .ticket-details {
+      border-left: none;
+      border-top: 1px dashed #ddd;
+      padding-left: 0;
+      padding-top: 15px;
+      margin-top: 15px;
+    }
+    
+    .cancel {
+      position: relative;
+      margin-top: 10px;
+      align-self: flex-end;
+    }
+  }

@@ -11,7 +11,7 @@ public class Ticket {
     private String totalFare;
     private int totalSeats;
 
-    Ticket() {
+    public Ticket() {
     }
 
     public Ticket(String username, String pnr, String trainNo, String date, String source, String destination, String totalFare, int totalSeats) {
